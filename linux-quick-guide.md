@@ -433,3 +433,56 @@ make install
 
 **[⬆ Back to Top](#table-of-contents)**
 
+
+### Disk usage
+
+1.  **Synopsis:** `du` command is used to check the information of disk usage of files and directories on a machine
+
+```cmd
+du [OPTION]... [FILE]...
+```
+
+2.  **Disk usage of a directory:** To find out the disk usage summary of a /home/ directory tree and each of its sub directories
+
+```cmd
+du  /home/
+```
+
+3.  **Disk usage in human readable format:** To find out the disk usage in human readable format
+
+```cmd
+du  -h /home/
+```
+
+4.  **Total disk usage of a directory:** To find out the total disk usage
+
+```cmd
+du  -sh /home/
+```
+
+5.  **Total disk usage of all files and directories:** To find out the total disk usage of files and directories
+
+```cmd
+du  -ah /home/
+```
+
+6.  **Total disk usage of all files and directories upto certain depth:** print the total for a directory only if it is N or fewer levels below the command
+
+```cmd
+du  -ah --max-depth 2 /home/
+```
+
+7.  **Total disk usage with excluded files:** To find out the total disk usage of files and directories, but excludes the files that matches given pattern.
+
+```cmd
+du -ah --exclude="*.txt" /home/
+```
+
+8.  **Help:** This command gives information about `du`
+
+```cmd
+du  --help
+```
+
+**[⬆ Back to Top](#table-of-contents)**
+
