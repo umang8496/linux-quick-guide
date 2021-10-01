@@ -43,13 +43,13 @@
 
    ```bash
    $ id
-   uid=1000(sj) gid=1000(sj) groups=1000(sj),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),120(lpadmin),131(lxd),132(sambashare)
+   uid=1000(user8496) gid=1000(user8496) groups=1000(user8496),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),120(lpadmin),131(lxd),132(sambashare)
    ```
 4. **groups:** This command is used to display all the groups for which the user belongs to.
 
    ```bash
    $ group
-   sj: sj, adm, cdrom, sudo, dip, plugdev, lpadmin, lxd, sambashare
+   user8496: user8496, adm, cdrom, sudo, dip, plugdev, lpadmin, lxd, sambashare
    ```
 
 5. **finger:**  Used to check the information of any currently logged in users. i.e, It displays users login time, tty (name), idle time, home directory, shell name etc.
@@ -57,7 +57,7 @@
    ```bash
    $ finger
    Login     Name       Tty      Idle  Login Time   Office     Office Phone
-   sj        sj        *:0             Aug 28 01:27 (:0)
+   user8496        user8496        *:0             Aug 28 01:27 (:0)
    ```
 
    This may not be available by default in many linux machines. In this case, you need to install it manually.
@@ -69,14 +69,14 @@
 
    ```bash
    $ users
-   sj
+   user8496
    ```
 
 7. **grep:** It  is a powerful pattern searching tool to find information about a specific user from the system accounts file: /etc/passwd.
 
        ```cmd
-       $ grep -i sj /etc/passwd
-       sj:x:1000:1000:sj,,,:/home/sj:/bin/bash
+       $ grep -i user8496 /etc/passwd
+       user8496:x:1000:1000:user8496,,,:/home/user8496:/bin/bash
        ```
 
 8. **W Command:** It(W) is a command-line utility that displays information about currently logged in users and what each user is doing.
@@ -88,7 +88,7 @@
     w
      18:45:04 up  2:09,  1 user,  load average: 0.09, 0.07, 0.02
     USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
-    sj       :0       :0               01:27   ?xdm?   1:14   0.01s /usr/lib/gdm3/g
+    user8496       :0       :0               01:27   ?xdm?   1:14   0.01s /usr/lib/gdm3/g
     ```
 
 9. **last or lastb:** Displays a list of last logged in users on the system. You can pass user names to display their login and hostname details.
@@ -99,11 +99,11 @@
     Example:
 
     last
-    sj       :0           :0               Fri Aug 28 01:27    gone - no logout
+    user8496       :0           :0               Fri Aug 28 01:27    gone - no logout
     reboot   system boot  5.4.0-29-generic Fri Aug 28 01:27   still running
-    sj       :0           :0               Wed Jul 29 11:46 - crash (29+13:40)
+    user8496       :0           :0               Wed Jul 29 11:46 - crash (29+13:40)
     reboot   system boot  5.4.0-29-generic Wed Jul 29 11:45   still running
-    sj       :0           :0               Thu May 14 21:04 - crash (75+14:41)
+    user8496       :0           :0               Thu May 14 21:04 - crash (75+14:41)
     reboot   system boot  5.4.0-29-generic Thu May 14 21:03   still running
 
     wtmp begins Thu May 14 21:03:56 2020
@@ -128,14 +128,14 @@
     ```
 
    **[⬆ Back to Top](#table-of-contents)**
-   
+
 
 ### File and directory commands
 
 1. **pwd** The pwd(Present Working Directory) command is used to print the name of the present/current working directory starting from the root.
    ```bash
    $ pwd
-   /home/sj/Desktop/Linux
+   /home/user8496/Desktop/Linux
    ```
 2. **mkdir** The mkdir(make directory) command allows users to create directories or folders.
 
@@ -232,4 +232,120 @@
        cat file_name1 file_name2
        ```
 
+    **[⬆ Back to Top](#table-of-contents)**
+
+
+### File permissions
+Since Linux is a multi-user operating system, it is necessary to provide security to prevent people from accessing each other’s confidential files.
+So Linux divides authorization into 2 levels,
+
+1. **Ownership:**
+Each file or directory has assigned with 3 types of owners
+i. **User:** Owner of the file who created it.
+ii. **Group:** Group of users with the same access permissions to the file or directory.
+iii. **Other:** Applies to all other users on the system
+
+2. **Permissions:**
+Each file or directory has following permissions for the above 3 types of owners.
+
+    i.   **Read:** Give you the authority to open and read a file and lists its content for a directory.
+
+    ii.  **Write:** Give you the authority to modify the contents of a file and add, remove and rename files stored in the directory.
+
+    iii. **Execute:** Give you the authority to run the program in Unix/Linux.
+
+     The permissions are indicated with below characters,
+
+         r = read permission
+
+         w = write permission
+
+         x = execute permission
+
+         \- = no permission
+
+    The above authorization levels represented in a diagram
+
+<img src="https://github.com/umang8496/linux-quick-guide/blob/master/images/permissions.png" width="600" height="400">
+
+There is a need to restrict own file/directory access to others.
+
+**Change access:**
+The `chmod` command is used to change the access mode of a file.  This command is used to set permissions (read, write, execute) on a file/directory for the owner, group and the others group.
+
+```cmd
+chmod [reference][operator][mode] file...
+
+Example
+chmod ugo-rwx test.txt
+```
+
+There are 2 ways to use this command,
+
+1. **Absolute mode:**
+The file permissions will be represented in a three-digit octal number.
+
+     The possible permissions types represented in a number format as below.
+
+     | Permission Type | Number |  Symbol |
+     | ------------- | ----- | ----- |
+     | No Permission | 0 | --- |
+     | Execute | 1 | --x |
+     | Write | 2 | -w- |
+     | Execute + Write | 3 | -wx |
+     | Read | 4 | r-- |
+     | Read + Execute | 5 | r-x |
+     | Read + Write | 6 | rw- |
+     | Read + Write + Execute | 7 | rwx |
+
+
+Let's update the permissions in absolute mode with an example as below,
+
+   ```cmd
+    chmode 764 test.txt
+   ```
+
+2. **Symbolic mode:**
+In the symbolic mode, you can modify permissions of a specific owner unlike absolute mode.
+
+    The owners are represented as below,
+
+     | Owner | Description |
+     | ----- | ----- |
+     | u | user/owner |
+     | g | group |
+     | o | other |
+     | a | all |
+
+    and the list of mathematical symbols to modify the file permissions as follows,
+
+     | Operator | Description |
+     | ------------- | ----- |
+     | + | Adds permission |
+     | - | Removes the permission |
+     | = | Assign the permission |
+
+**Changing Ownership and Group:**
+It is possible to change the the ownership and group of a file/directory using `chown` command.
+
+```cmd
+chown user filename
+chown user:group filename
+
+Example:
+chown John test.txt
+chown John:Admin test.txt
+```
+
+**Change group-owner only:**
+Sometimes you may need to change group owner only. In this case, chgrp command need to be used
+
+```cmd
+chgrp group_name filename
+
+Example:
+sudo chgrp Administrator test.txt
+```
+
 **[⬆ Back to Top](#table-of-contents)**
+
