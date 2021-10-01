@@ -127,7 +127,7 @@
     news                                       **Never logged in**
     ```
 
-   **[⬆ Back to Top](#table-of-contents)**
+**[⬆ Back to Top](#table-of-contents)**
 
 
 ### File and directory commands
@@ -232,7 +232,7 @@
        cat file_name1 file_name2
        ```
 
-    **[⬆ Back to Top](#table-of-contents)**
+**[⬆ Back to Top](#table-of-contents)**
 
 
 ### File permissions
@@ -482,6 +482,41 @@ du -ah --exclude="*.txt" /home/
 
 ```cmd
 du  --help
+```
+
+**[⬆ Back to Top](#table-of-contents)**
+
+
+### System and Hardware information
+
+1.  **Print all information**: `uname` is mainly used to print system information.
+
+```bash
+$ uname -a
+```
+
+2.  **Print kernel name**:
+
+```bash
+$ uname -s
+```
+
+3.  **Print kernel release**:
+
+```bash
+$ uname -r
+```
+
+4.  **Print Architecture**:
+
+```bash
+$ uname -m
+```
+
+5.  **Print Operating System**:
+
+```bash
+$ uname -o
 ```
 
 **[⬆ Back to Top](#table-of-contents)**
